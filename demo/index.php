@@ -6,11 +6,6 @@
  * Time: 4:31 PM
  */
 
-$return=array('name'=>'zuoca',
-'sex'=>'male');
+echo 'Hi,Ajax Study';
 
-
-$result=json_encode($return);
-
-echo $result;
 

@@ -38,12 +38,20 @@
     function crossDomain() {
 
         var js = document.createElement('script');
-        js.src = "b.js";
+        js.src = "getUserInfo.php";
         document.getElementsByTagName("head")[0].appendChild(js);
         js.onload = function(){
+            console.log(hi);
+            var result=JSON.parse(hi);
 
-            console.log(www);
-            document.getElementById("cross").innerText=www;
+            var cont='';
+
+            for(var x in result){
+
+                cont+=x+"="+result[x]+'\n';
+            }
+            document.getElementById("cross").innerText=cont;
+
         }
 
     }
