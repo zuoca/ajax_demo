@@ -1,0 +1,66 @@
+<html>
+<body>
+
+
+
+<script type="text/javascript">
+
+
+    function loadXMLDoc() {
+        var xmlhttp;
+
+
+        if (window.XMLHttpRequest) {// code for IE7+, Firefox, Chrome, Opera, Safari
+            xmlhttp = new XMLHttpRequest();
+        }
+        else {// code for IE6, IE5
+            xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+        }
+
+        //定义响应函数
+        xmlhttp.onreadystatechange = function () {
+            if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+                document.getElementById("myDiv").innerHTML = xmlhttp.responseText;
+            } else if (xmlhttp.status == 404) {
+
+                document.getElementById("myDiv").innerHTML = "Page not found!";
+            }
+        }
+
+        xmlhttp.open("GET", "b.html", true);
+        xmlhttp.send();
+
+
+    }
+
+
+    //跨域解决
+    function crossDomain() {
+
+        var js = document.createElement('script');
+        js.src = "b.js";
+        document.getElementsByTagName("head")[0].appendChild(js);
+        js.onload = function(){
+
+            console.log(www);
+            document.getElementById("cross").innerText=www;
+        }
+
+    }
+
+</script>
+
+
+<div id="myDiv"><h3>Normal Ajax Test</h3></div>
+
+<div id="cross"><h3>Cross Domain Test</h3></div>
+
+
+<button id="btn" type="button" onclick="loadXMLDoc()">Normal Ajax Test</button>
+<br>
+
+<button type="button" onclick="crossDomain()">跨域访问</button>
+
+
+</body>
+</html>
